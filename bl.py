@@ -59,7 +59,7 @@ def Trading(name):
     targetname = 'THB_' + name
     latestprice = GetPrice(targetname)
     print(f'{targetname} Lastest price = {latestprice}')
-    rate = round(latestprice)
+    rate = latestprice - 0.5
     print(f'Rate = {rate}')
     # Get MyWallet
     wallet = GetMyWallet()
@@ -70,7 +70,7 @@ def Trading(name):
 
     # CalProfit
     if(amt > 0):
-        profitcal = round(latestprice + 1) + 0.5
+        profitcal = latestprice + 1
         print(f'ProfitCal = {profitcal}')
     # Get Pending Order
     orders = GetMyOrder(targetname)
