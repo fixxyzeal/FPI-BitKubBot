@@ -47,7 +47,7 @@ def BuyOrder(name, amt, rat):
 
 def Authenticate(user, password):
     res = requests.post(
-        url+'/user', json={'UserName': user, 'PassWord': password})
+        url + '/user', json={'UserName': user, 'PassWord': password})
     data = res.json()
     return data
 
@@ -85,7 +85,7 @@ def Trading(name):
             diff = orderRate - latestprice
             print(f'ProfitCal = {profitcal} Different = {diff}')
             if(ordertype == 'SELL'):
-                if(diff >= profitcal):
+                if(diff >= targetprofit):
                     # Cancel Order
                     CancelOrder(hashkey)
                     print(f'Order {hashkey} Was Cancel Sell')
