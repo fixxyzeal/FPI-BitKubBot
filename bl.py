@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-url = os.environ.get('DATAAPIURL')+'/user'
+url = os.environ.get('DATAAPIURL')
 
 # initial obj non-secure and secure
 bitkub = Bitkub(api_key=os.environ.get('KEY'),
@@ -46,7 +46,8 @@ def BuyOrder(name, amt, rat):
 
 
 def Authenticate(user, password):
-    res = requests.post(url, json={'UserName': user, 'PassWord': password})
+    res = requests.post(
+        url+'/user', json={'UserName': user, 'PassWord': password})
     data = res.json()
     return data
 
@@ -101,5 +102,9 @@ def Trading(name):
     elif (not orders['result']):
         # Create SELL Order
         SellOrder(targetname, amt, profitcal)
+        requests.post(
+            url+'/insertcryptohistory', json={"CryptoName": name,
+                                              "Amt": amt,
+                                              "Rate": profitcal})
         print(f'Create Sell Order with rate = {profitcal} balance = {balance}')
     return "OK"
