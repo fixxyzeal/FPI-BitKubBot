@@ -54,11 +54,12 @@ def Authenticate(user, password):
 def Trading(name):
     # Get Target Price,Trade
     targetprofit = 3
+    targetlost = -3
     profitcal = 0
     targetname = 'THB_' + name
     latestprice = GetPrice(targetname)
     print(f'{targetname} Lastest price = {latestprice}')
-    rate = round(latestprice - 1)
+    rate = round(latestprice)
     print(f'Rate = {rate}')
     # Get MyWallet
     wallet = GetMyWallet()
@@ -88,7 +89,7 @@ def Trading(name):
                     CancelOrder(hashkey)
                     print(f'Order {hashkey} Was Cancel Sell')
             if(ordertype == 'BUY'):
-                if(diff <= -profitcal):
+                if(diff <= targetlost):
                     # Cancel Order
                     CancelOrder(hashkey)
                     print(f'Order {hashkey} Was Cancel Buy')
