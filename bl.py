@@ -69,7 +69,7 @@ def Trading(name):
 
     # CalProfit
     if(amt > 0):
-        profitcal = round(latestprice + 1)
+        profitcal = round(latestprice + 1) + 0.5
         print(f'ProfitCal = {profitcal}')
     # Get Pending Order
     orders = GetMyOrder(targetname)
@@ -86,7 +86,12 @@ def Trading(name):
                 if(diff >= profitcal):
                     # Cancel Order
                     CancelOrder(hashkey)
-                    print(f'Order {hashkey} Was Cancel')
+                    print(f'Order {hashkey} Was Cancel Sell')
+            if(ordertype == 'BUY'):
+                if(diff <= -profitcal):
+                    # Cancel Order
+                    CancelOrder(hashkey)
+                    print(f'Order {hashkey} Was Cancel Buy')
 
     # balance > 0 place order
     if(balance > 0):
