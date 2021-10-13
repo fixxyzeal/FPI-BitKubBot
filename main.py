@@ -23,7 +23,9 @@ def Index() -> str:
 def Trading() -> str:
     # Call Trading BL Logic
     name = request.json['Name']
-    return jsonify(bl.Trading(name))
+    for n in name:
+        bl.Trading(n)
+    return jsonify({"message": "OK"})
 
 
 if __name__ == '__main__':

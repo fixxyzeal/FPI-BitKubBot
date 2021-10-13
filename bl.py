@@ -54,8 +54,8 @@ def Authenticate(user, password):
 
 def Trading(name):
     # Get Target Price,Trade
-    targetprofit = 3
-    targetlost = -3
+    targetprofit = 2
+    targetlost = 1
     profitcal = 0
     targetname = 'THB_' + name
     latestprice = GetPrice(targetname)
@@ -71,7 +71,7 @@ def Trading(name):
 
     # CalProfit
     if(amt > 0):
-        profitcal = latestprice + 1
+        profitcal = latestprice + targetprofit
         print(f'ProfitCal = {profitcal}')
     # Get Pending Order
     orders = GetMyOrder(targetname)
