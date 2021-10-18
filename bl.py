@@ -60,7 +60,7 @@ def Trading(name):
     targetname = 'THB_' + name
     latestprice = GetPrice(targetname)
     print(f'{targetname} Lastest price = {latestprice}')
-    rate = latestprice - 0.5
+    rate = latestprice - 2
     print(f'Rate = {rate}')
     # Get MyWallet
     wallet = GetMyWallet()
