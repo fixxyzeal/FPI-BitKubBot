@@ -55,7 +55,7 @@ def Authenticate(user, password):
 def Trading(name):
     # Get Target Price,Trade
     targetprofit = 2
-    targetlost = 1
+    targetlost = 4
     profitcal = 0
     targetname = 'THB_' + name
     latestprice = GetPrice(targetname)
